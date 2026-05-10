@@ -9,9 +9,18 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://garaadsystems.com"),
   title: "Garaad Systems",
   description:
     "Garaad Systems delivers e-government, digital engineering, and institutional modernization solutions that strengthen public and private sector institutions across Ethiopia and the Horn of Africa.",
+  openGraph: {
+    siteName: "Garaad Systems",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

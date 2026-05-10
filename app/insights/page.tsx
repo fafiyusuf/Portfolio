@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { articles } from "@/lib/data/insights";
 
 export const metadata: Metadata = {
   title: "Insights — Garaad Systems",
@@ -9,63 +10,8 @@ export const metadata: Metadata = {
     "Perspectives, technical guides, and case studies from Garaad Systems on e-government, digital transformation, and institutional modernization in Ethiopia and the Horn of Africa.",
 };
 
-const featured = {
-  category: "Perspective",
-  readTime: "7 min read",
-  date: "April 2025",
-  title: "The Case for E-Government in the Horn of Africa",
-  excerpt:
-    "Across Ethiopia, Djibouti, and Somalia, governments are increasingly recognizing that paper-based service delivery is no longer sustainable. But building digital government is harder than buying software. We explore what it actually takes to modernize public institutions — and why most attempts fall short.",
-  topics: ["Digital Government", "East Africa", "Public Policy"],
-};
-
-const articles = [
-  {
-    category: "Case Study",
-    readTime: "8 min read",
-    date: "March 2025",
-    title: "How We Upgraded the Construction Licence Registration System",
-    excerpt:
-      "A detailed look at the end-to-end process of modernizing the Somali Regional Government's construction licence workflow — from discovery and architecture design through to deployment and staff training.",
-    topics: ["E-Government", "Case Study", "Ethiopia"],
-  },
-  {
-    category: "Technical",
-    readTime: "5 min read",
-    date: "February 2025",
-    title: "Designing Secure Portals for Public Institutions",
-    excerpt:
-      "Government systems handle data that is both sensitive and difficult to secure. We break down the security principles that guide our architecture decisions — from access control to audit logging.",
-    topics: ["Security", "Architecture", "Government"],
-  },
-  {
-    category: "Technical",
-    readTime: "6 min read",
-    date: "January 2025",
-    title: "API-First Architecture: Why Government Systems Need It",
-    excerpt:
-      "Legacy government systems are siloed, brittle, and expensive to maintain. API-first design changes that. Here's how we apply this principle to every platform we build — and why it matters for long-term institutional value.",
-    topics: ["API Design", "Architecture", "Government Systems"],
-  },
-  {
-    category: "Company",
-    readTime: "4 min read",
-    date: "December 2024",
-    title: "Hybrid Teams: The Garaad Model for Scalable Delivery",
-    excerpt:
-      "Most consulting firms either over-staff and overprice, or under-resource and under-deliver. We built a hybrid model that gives clients access to senior expertise at every stage without the overhead. This is how it works.",
-    topics: ["Team Structure", "Delivery Model", "Consulting"],
-  },
-  {
-    category: "Digital Transformation",
-    readTime: "6 min read",
-    date: "November 2024",
-    title: "From Paper to Portal: Automating Government Workflows",
-    excerpt:
-      "Workflow automation is not about replacing people — it is about removing the friction that slows them down. We look at how digital workflow tools change the day-to-day reality of government workers and the citizens they serve.",
-    topics: ["Workflow Automation", "Government", "Process Design"],
-  },
-];
+const featuredArticle = articles.find((a) => a.featured)!;
+const restArticles = articles.filter((a) => !a.featured);
 
 const categoryColors: Record<string, string> = {
   Perspective: "bg-[#8CC220]/10 text-[#5a9010]",
@@ -114,45 +60,61 @@ export default function InsightsPage() {
             <p className="text-[10px] font-bold text-[#0A1628]/40 uppercase tracking-widest mb-6">
               Featured Article
             </p>
-            <div className="bg-[#0A1628] rounded-2xl overflow-hidden">
+            <Link
+              href={`/insights/${featuredArticle.slug}`}
+              className="group block bg-[#0A1628] rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300"
+            >
               <div className="grid md:grid-cols-3">
                 <div className="md:col-span-2 p-12 md:p-14">
                   <div className="flex items-center gap-3 mb-7">
-                    <span className={`text-[11px] font-bold px-3 py-1 rounded-full ${categoryColors[featured.category] ?? "bg-gray-100 text-gray-600"}`}>
-                      {featured.category}
+                    <span
+                      className={`text-[11px] font-bold px-3 py-1 rounded-full ${
+                        categoryColors[featuredArticle.category] ?? "bg-gray-100 text-gray-600"
+                      }`}
+                    >
+                      {featuredArticle.category}
                     </span>
-                    <span className="text-xs text-white/30">{featured.readTime}</span>
-                    <span className="text-xs text-white/30">{featured.date}</span>
+                    <span className="text-xs text-white/30">{featuredArticle.readTime}</span>
+                    <span className="text-xs text-white/30">{featuredArticle.date}</span>
                   </div>
-                  <h2 className="text-3xl md:text-4xl font-black text-white leading-tight tracking-tight mb-5">
-                    {featured.title}
+                  <h2 className="text-3xl md:text-4xl font-black text-white leading-tight tracking-tight mb-5 group-hover:text-[#8CC220] transition-colors">
+                    {featuredArticle.title}
                   </h2>
-                  <p className="text-white/50 text-sm leading-relaxed mb-8">{featured.excerpt}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {featured.topics.map((topic) => (
-                      <span
-                        key={topic}
-                        className="text-[11px] font-medium text-white/40 border border-white/15 px-2.5 py-1 rounded-lg"
-                      >
-                        {topic}
-                      </span>
-                    ))}
+                  <p className="text-white/50 text-sm leading-relaxed mb-8">
+                    {featuredArticle.excerpt}
+                  </p>
+                  <div className="inline-flex items-center gap-2 text-[#8CC220] text-sm font-semibold group-hover:gap-3 transition-all">
+                    Read article
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path
+                        d="M2 7h10M8 3l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </div>
                 </div>
                 <div className="hidden md:flex flex-col justify-end p-14">
                   <div className="bg-white/5 border border-white/10 rounded-xl p-6">
                     <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-3">
-                      About This Piece
+                      Topics
                     </p>
-                    <p className="text-xs text-white/40 leading-relaxed">
-                      Drawing on our direct experience delivering government digital systems in the
-                      Somali Region, this piece examines the structural barriers to e-government
-                      adoption and what it takes to overcome them.
-                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {featuredArticle.topics.map((topic) => (
+                        <span
+                          key={topic}
+                          className="text-[11px] font-medium text-white/40 border border-white/15 px-2.5 py-1 rounded-lg"
+                        >
+                          {topic}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -166,9 +128,10 @@ export default function InsightsPage() {
               <p className="text-xs text-gray-400">{articles.length} articles</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {articles.map((article) => (
-                <article
-                  key={article.title}
+              {restArticles.map((article) => (
+                <Link
+                  key={article.slug}
+                  href={`/insights/${article.slug}`}
                   className="group border border-gray-100 rounded-2xl p-7 hover:border-gray-200 hover:shadow-xl hover:shadow-gray-100 transition-all duration-300 flex flex-col"
                 >
                   <div className="flex items-center gap-2.5 mb-5">
@@ -181,10 +144,10 @@ export default function InsightsPage() {
                     </span>
                     <span className="text-[11px] text-gray-400">{article.readTime}</span>
                   </div>
-                  <h3 className="text-base font-black text-gray-900 leading-snug mb-3 group-hover:text-[#0A1628] transition-colors">
+                  <h3 className="text-base font-black text-gray-900 leading-snug mb-3 group-hover:text-[#0A1628] transition-colors flex-1">
                     {article.title}
                   </h3>
-                  <p className="text-xs text-gray-500 leading-relaxed mb-5 flex-1">{article.excerpt}</p>
+                  <p className="text-xs text-gray-500 leading-relaxed mb-5">{article.excerpt}</p>
                   <div className="flex items-center justify-between mt-auto">
                     <div className="flex flex-wrap gap-1.5">
                       {article.topics.slice(0, 2).map((topic) => (
@@ -198,7 +161,7 @@ export default function InsightsPage() {
                     </div>
                     <span className="text-[11px] text-gray-400 shrink-0">{article.date}</span>
                   </div>
-                </article>
+                </Link>
               ))}
             </div>
           </div>
@@ -222,8 +185,8 @@ export default function InsightsPage() {
               Insights Straight to Your Inbox
             </h2>
             <p className="text-white/45 mb-10 max-w-md mx-auto leading-relaxed">
-              We publish articles on e-government, digital transformation, and technical architecture.
-              No noise — just substantive thinking from our team.
+              We publish articles on e-government, digital transformation, and technical
+              architecture. No noise — just substantive thinking from our team.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto mb-14">
               <input

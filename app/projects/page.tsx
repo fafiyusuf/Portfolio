@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { projects } from "@/lib/data/projects";
 
 export const metadata: Metadata = {
   title: "Projects — Garaad Systems",
@@ -9,115 +10,14 @@ export const metadata: Metadata = {
     "Portfolio of digital solutions delivered for public institutions and organizations across Ethiopia and the Horn of Africa.",
 };
 
-const featured = {
-  category: "E-Government · Featured Case Study",
-  name: "Construction Licence Registration System",
-  client: "Somali Regional Government — Urban Development & Construction Bureau",
-  description:
-    "A comprehensive upgrade of the digital platform managing construction licence registration for the Somali Regional Government. The project modernized a legacy workflow, digitizing the full application, review, approval, and issuance pipeline for contractors and property developers across the region.",
-  outcomes: [
-    "Eliminated paper-based application and approval bottlenecks",
-    "Digitized the full licence lifecycle from submission to issuance",
-    "Delivered real-time reporting dashboards for bureau administrators",
-    "Deployed in full compliance with all contractual and technical requirements",
-    "Reduced average processing time for licence applications",
-  ],
-  tags: ["E-Government", "Portal", "Workflow Automation", "Somali Region", "Ethiopia"],
-};
-
-const projects = [
-  {
-    id: 1,
-    category: "Youth Empowerment",
-    name: "Masaf",
-    description:
-      "A digital platform empowering youth through employment programs and community resilience initiatives across the Somali Region.",
-    detail:
-      "Masaf connects young people with employment opportunities, training programs, and community-led initiatives — providing the regional government with real-time data on youth engagement and program impact.",
-    tags: ["Web Platform", "Civic Tech", "Ethiopia"],
-    logo: (
-      <div className="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center shrink-0">
-        <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
-          <circle cx="26" cy="26" r="22" stroke="#dc2626" strokeWidth="2" fill="none" />
-          <circle cx="26" cy="26" r="14" stroke="#dc2626" strokeWidth="1.5" fill="none" />
-          <path d="M14 26 Q20 16 26 26 Q32 36 38 26" stroke="#dc2626" strokeWidth="1.5" fill="none" />
-          <circle cx="26" cy="20" r="3" fill="#dc2626" />
-        </svg>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    category: "Travel & Tourism",
-    name: "FlyEase",
-    description:
-      "A modern travel discovery platform connecting users to destinations and curated experiences across East Africa.",
-    detail:
-      "FlyEase provides a streamlined booking and discovery experience for travelers exploring East Africa, with curated itineraries, partner integrations, and a mobile-first interface built for emerging-market connectivity.",
-    tags: ["Web App", "Marketplace", "Travel"],
-    logo: (
-      <div className="h-12 flex items-center gap-1 shrink-0">
-        <span className="text-lg font-black text-red-600 tracking-tight">FLY</span>
-        <svg width="14" height="10" viewBox="0 0 20 14" fill="none">
-          <path d="M2 7h14M12 2l6 5-6 5" stroke="#dc2626" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <span className="text-lg font-black text-red-600 tracking-tight">EASE</span>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    category: "Culture & Heritage",
-    name: "Mahadho",
-    description:
-      "A dynamic digital platform preserving and showcasing Somali culture, literature, and heritage for global audiences.",
-    detail:
-      "Mahadho serves as a living digital archive of Somali cultural heritage — enabling scholars, communities, and diaspora to discover, contribute, and engage with literature, oral traditions, and historical records.",
-    tags: ["Content Platform", "Culture", "Digital Archive"],
-    logo: (
-      <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center shrink-0">
-        <svg width="30" height="30" viewBox="0 0 60 60" fill="none">
-          <rect x="8" y="16" width="40" height="32" rx="2" stroke="#374151" strokeWidth="2" fill="none" />
-          <path d="M8 24h40" stroke="#374151" strokeWidth="1.5" />
-          <path d="M30 16V10" stroke="#374151" strokeWidth="2" strokeLinecap="round" />
-          <path d="M22 10h16" stroke="#374151" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    category: "E-Government",
-    name: "Urban Development Bureau Portal",
-    description:
-      "A digital licence registration portal for the Somali Regional Government's Urban Development and Construction Bureau.",
-    detail:
-      "The primary public-facing interface for the Construction Licence Registration System — enabling contractors, developers, and property owners to submit applications, track status, and receive digital licence approvals.",
-    tags: ["E-Government", "Public Portal", "Somali Region"],
-    logo: (
-      <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-        <svg width="28" height="28" viewBox="0 0 52 52" fill="none">
-          <circle cx="26" cy="26" r="22" stroke="#374151" strokeWidth="1.5" fill="none" />
-          <path
-            d="M14 38 L20 26 L26 32 L32 22 L38 30"
-            stroke="#3b82f6"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-          <circle cx="26" cy="18" r="4" fill="#3b82f6" opacity="0.7" />
-        </svg>
-      </div>
-    ),
-  },
-];
+const featured = projects.find((p) => p.featured)!;
+const rest = projects.filter((p) => !p.featured);
 
 const stats = [
   { value: "20+", label: "Projects Delivered" },
   { value: "8+", label: "Institutions Served" },
   { value: "100%", label: "On-Time Delivery" },
-  { value: "3", label: "Countries" },
+  { value: "5+", label: "Years of Experience" },
 ];
 
 export default function ProjectsPage() {
@@ -156,25 +56,27 @@ export default function ProjectsPage() {
         {/* Featured Case Study */}
         <section className="py-24 px-6 bg-white">
           <div className="max-w-6xl mx-auto">
-            <div className="mb-8">
-              <span className="text-xs font-bold text-[#0A1628] uppercase tracking-widest">
-                Featured Case Study
-              </span>
-            </div>
-            <div className="bg-[#F7F8FA] rounded-2xl border border-gray-100 overflow-hidden">
+            <p className="text-[10px] font-bold text-[#0A1628]/40 uppercase tracking-widest mb-6">
+              Featured Case Study
+            </p>
+            <Link
+              href={`/projects/${featured.slug}`}
+              className="group block bg-[#F7F8FA] rounded-2xl border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-2xl hover:shadow-gray-100 transition-all duration-300"
+            >
               <div className="grid md:grid-cols-2">
-                {/* Left: Info */}
                 <div className="p-10 md:p-14">
                   <span className="text-[10px] font-bold text-[#8CC220] bg-[#0A1628] rounded-lg px-2.5 py-1 mb-6 inline-block uppercase tracking-widest">
-                    E-Government
+                    {featured.category}
                   </span>
-                  <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight mb-4">
+                  <h2 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight mb-3 group-hover:text-[#0A1628]">
                     {featured.name}
                   </h2>
-                  <p className="text-xs font-semibold text-[#0A1628]/50 uppercase tracking-widest mb-6">
+                  <p className="text-xs font-semibold text-[#0A1628]/50 uppercase tracking-widest mb-5">
                     {featured.client}
                   </p>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-8">{featured.description}</p>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-8">
+                    {featured.description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {featured.tags.map((tag) => (
                       <span
@@ -186,13 +88,12 @@ export default function ProjectsPage() {
                     ))}
                   </div>
                 </div>
-                {/* Right: Outcomes */}
                 <div className="bg-[#0A1628] p-10 md:p-14">
                   <p className="text-[10px] font-bold text-white/35 uppercase tracking-widest mb-7">
                     Key Outcomes
                   </p>
                   <ul className="space-y-4">
-                    {featured.outcomes.map((outcome) => (
+                    {featured.outcomes.slice(0, 5).map((outcome) => (
                       <li key={outcome} className="flex items-start gap-3">
                         <svg
                           width="14"
@@ -213,9 +114,21 @@ export default function ProjectsPage() {
                       </li>
                     ))}
                   </ul>
+                  <div className="mt-8 inline-flex items-center gap-2 text-[#8CC220] text-sm font-semibold group-hover:gap-3 transition-all">
+                    Read case study
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path
+                        d="M2 7h10M8 3l4 4-4 4"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -223,15 +136,16 @@ export default function ProjectsPage() {
         <section className="pb-24 px-6 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="mb-10">
-              <span className="text-xs font-bold text-[#0A1628] uppercase tracking-widest">
+              <span className="text-[10px] font-bold text-[#0A1628]/40 uppercase tracking-widest">
                 All Projects
               </span>
             </div>
             <div className="grid md:grid-cols-2 gap-5">
-              {projects.map((project) => (
-                <div
-                  key={project.id}
-                  className="group border border-gray-100 rounded-2xl p-8 hover:border-gray-200 hover:shadow-2xl hover:shadow-gray-100 transition-all duration-300"
+              {rest.map((project) => (
+                <Link
+                  key={project.slug}
+                  href={`/projects/${project.slug}`}
+                  className="group border border-gray-100 rounded-2xl p-8 hover:border-gray-200 hover:shadow-2xl hover:shadow-gray-100 transition-all duration-300 block"
                 >
                   <div className="flex items-start justify-between mb-5">
                     {project.logo}
@@ -239,20 +153,37 @@ export default function ProjectsPage() {
                       {project.category}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{project.name}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed mb-3">{project.description}</p>
-                  <p className="text-xs text-gray-400 leading-relaxed mb-6">{project.detail}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] font-medium text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-lg"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#0A1628]">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm text-gray-500 leading-relaxed mb-5">
+                    {project.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex flex-wrap gap-2">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[11px] font-medium text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-lg"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="text-sm text-[#0A1628] font-semibold group-hover:text-[#8CC220] inline-flex items-center gap-1.5 shrink-0 ml-4 transition-colors">
+                      View
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path
+                          d="M2 7h10M8 3l4 4-4 4"
+                          stroke="currentColor"
+                          strokeWidth="1.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -290,7 +221,8 @@ export default function ProjectsPage() {
               Ready to Build Something That Matters?
             </h2>
             <p className="text-[#0A1628]/60 mb-10 max-w-md mx-auto leading-relaxed">
-              Tell us about your institution&apos;s challenge and we&apos;ll show you how we can solve it.
+              Tell us about your institution&apos;s challenge and we&apos;ll show you how we can
+              solve it.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
