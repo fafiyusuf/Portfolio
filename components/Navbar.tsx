@@ -26,6 +26,7 @@ export default function Navbar() {
   }, []);
 
   const showDark = !isHome || scrolled;
+  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
 
   return (
     <nav
@@ -48,19 +49,33 @@ export default function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={`text-sm font-medium transition-colors ${
-                showDark
-                  ? "text-gray-500 hover:text-gray-900"
-                  : "text-white hover:text-white/80"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`relative text-sm font-medium transition-colors ${
+                  showDark
+                    ? active
+                      ? "text-gray-900 font-semibold"
+                      : "text-gray-500 hover:text-gray-900"
+                    : active
+                    ? "text-white font-semibold"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {item.label}
+                {active && (
+                  <span
+                    className={`absolute -bottom-1 left-0 right-0 h-0.5 rounded-full ${
+                      showDark ? "bg-[#8CC220]" : "bg-white"
+                    }`}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </div>
 
         <Link
@@ -97,16 +112,26 @@ export default function Navbar() {
 
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-6 py-6 flex flex-col gap-5">
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="text-sm font-medium text-gray-700 hover:text-gray-900"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navLinks.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={`text-sm font-medium transition-colors ${
+                  active
+                    ? "text-gray-900 font-semibold"
+                    : "text-gray-500 hover:text-gray-900"
+                }`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+                {active && (
+                  <span className="ml-2 inline-block w-1.5 h-1.5 rounded-full bg-[#8CC220] align-middle" />
+                )}
+              </Link>
+            );
+          })}
           <Link
             href="/contact"
             className="bg-[#0A1628] text-white text-sm px-5 py-3 rounded-lg font-bold text-center"
