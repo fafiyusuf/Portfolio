@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "About — Garaad Systems",
   description:
-    "Garaad Systems is a technology and digital consultancy based in Jijiga, Somali Region, Ethiopia, specializing in e-government platforms and mission-critical software for public institutions.",
+    "Garaad Systems is a technology and digital consultancy based in Jigjiga, Somali Region, Ethiopia, specializing in e-government platforms and mission-critical software for public institutions.",
 };
 
 const values = [
@@ -142,7 +142,7 @@ export default function AboutPage() {
             <div className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
               <span className="w-1.5 h-1.5 rounded-full bg-[#8CC220] block" />
               <span className="text-xs text-white/60 font-medium tracking-wide">
-                Jijiga, Somali Region, Ethiopia
+                Jigjiga, Somali Region, Ethiopia
               </span>
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.04] tracking-tight mb-7 max-w-4xl">
@@ -151,7 +151,7 @@ export default function AboutPage() {
               <span className="text-[#8CC220]">Powering Public Services</span>
             </h1>
             <p className="text-white/55 text-lg max-w-2xl leading-relaxed">
-              We are a technology and digital consultancy born in Jijiga, Ethiopia — built to deliver
+              We are a technology and digital consultancy born in Jigjiga, Ethiopia — built to deliver
               the government-grade software systems that the Horn of Africa&apos;s institutions need to
               serve their communities effectively.
             </p>
@@ -212,7 +212,7 @@ export default function AboutPage() {
                   different era.
                 </p>
                 <p>
-                  Based in Jijiga — the capital of Ethiopia&apos;s Somali Region — we positioned ourselves
+                  Based in Jigjiga — the capital of Ethiopia&apos;s Somali Region — we positioned ourselves
                   where the need was greatest. This proximity to our clients shapes how we work: we
                   understand the operational realities, institutional constraints, and technical
                   environments that outside firms routinely underestimate.
@@ -227,7 +227,7 @@ export default function AboutPage() {
             </div>
             <div className="space-y-3">
               {[
-                { label: "Founded", value: "Jijiga, Somali Region, Ethiopia" },
+                { label: "Founded", value: "Jigjiga, Somali Region, Ethiopia" },
                 { label: "Focus", value: "E-Government & Institutional Software" },
                 { label: "Model", value: "Lean, expert-driven with hybrid team structure" },
                 { label: "Clients", value: "Public institutions, regional government, organizations" },
@@ -327,6 +327,66 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* Team */}
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="max-w-2xl mb-14">
+              <span className="text-xs font-bold text-[#0A1628] uppercase tracking-widest mb-3 block">
+                The People Behind the Work
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-[1.1] tracking-tight">
+                Expert-Led at Every Stage
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed mt-5">
+                Our core team combines deep institutional knowledge with hands-on engineering
+                experience — giving every client direct access to senior expertise from day one.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-5">
+              {[
+                {
+                  initial: "AI",
+                  name: "Abdifatah Ibrahim",
+                  title: "Founder & Lead Architect",
+                  bio: "Leads architecture and technical strategy across all client engagements. Specializes in government-grade systems design, security architecture, and long-term institutional software delivery.",
+                  bg: "bg-[#0A1628]",
+                  text: "text-[#8CC220]",
+                },
+                {
+                  initial: "—",
+                  name: "Senior Engineers",
+                  title: "In-House Technical Team",
+                  bio: "Our in-house engineers bring deep expertise in full-stack development, systems integration, and workflow automation — handling the critical build and review phases of every engagement.",
+                  bg: "bg-[#8CC220]",
+                  text: "text-[#0A1628]",
+                },
+                {
+                  initial: "—",
+                  name: "Project Specialists",
+                  title: "Vetted Project-Based Developers",
+                  bio: "For larger engagements, we bring in vetted specialist developers from our trusted network — scaling capacity precisely to project requirements without compromising architectural oversight.",
+                  bg: "bg-gray-100",
+                  text: "text-gray-500",
+                },
+              ].map((member) => (
+                <div
+                  key={member.name}
+                  className="bg-[#F7F8FA] border border-gray-100 rounded-2xl p-8 hover:border-[#0A1628]/20 hover:shadow-xl hover:shadow-gray-100 transition-all duration-300"
+                >
+                  <div className={`w-14 h-14 rounded-xl ${member.bg} flex items-center justify-center mb-6`}>
+                    <span className={`text-sm font-black ${member.text}`}>{member.initial}</span>
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900 mb-1">{member.name}</h3>
+                  <p className="text-xs font-semibold text-[#0A1628]/50 uppercase tracking-widest mb-4">
+                    {member.title}
+                  </p>
+                  <p className="text-sm text-gray-500 leading-relaxed">{member.bio}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Values */}
         <section className="py-24 px-6 bg-[#0A1628]">
           <div className="max-w-6xl mx-auto">
@@ -385,6 +445,42 @@ export default function AboutPage() {
                   </span>
                   <h3 className="text-sm font-bold text-[#0A1628] mb-2.5">{cap.title}</h3>
                   <p className="text-xs text-[#0A1628]/60 leading-relaxed">{cap.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Tech Stack */}
+        <section className="py-24 px-6 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
+              <span className="text-xs font-bold text-[#0A1628] uppercase tracking-widest mb-3 block">
+                Technologies We Work With
+              </span>
+              <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight leading-[1.1]">
+                The Stack Behind Every Delivery
+              </h2>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[
+                { category: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS"] },
+                { category: "Backend", items: ["Node.js", "Python", "REST APIs", "GraphQL"] },
+                { category: "Data & Storage", items: ["PostgreSQL", "MongoDB", "Redis", "S3"] },
+                { category: "Infrastructure", items: ["Docker", "GitHub Actions", "Linux", "Nginx"] },
+              ].map((group) => (
+                <div key={group.category} className="bg-[#F7F8FA] rounded-2xl p-6 border border-gray-100">
+                  <p className="text-[10px] font-bold text-[#0A1628]/40 uppercase tracking-widest mb-4">
+                    {group.category}
+                  </p>
+                  <ul className="space-y-2.5">
+                    {group.items.map((item) => (
+                      <li key={item} className="flex items-center gap-2.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#8CC220] shrink-0" />
+                        <span className="text-sm font-medium text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>

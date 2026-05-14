@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://garaadsystems.com"),
   title: "Garaad Systems",
   description:
-    "Garaad Systems delivers e-government, digital engineering, and institutional modernization solutions that strengthen public and private sector institutions across Ethiopia and the Horn of Africa.",
+    "Garaad Systems delivers e-government, digital engineering, and institutional modernization solutions that strengthen public and private sector institutions across Ethiopia and the Horn of Africa. Based in Jigjiga, Somali Region.",
   openGraph: {
     siteName: "Garaad Systems",
     type: "website",

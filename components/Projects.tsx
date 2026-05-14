@@ -1,90 +1,5 @@
 import Link from "next/link";
-
-const projects = [
-  {
-    id: 1,
-    category: "Youth Empowerment",
-    name: "Masaf",
-    description:
-      "A digital platform empowering youth through employment programs and community resilience initiatives across the Somali Region.",
-    tags: ["Web Platform", "Civic Tech", "Ethiopia"],
-    logo: (
-      <div className="w-14 h-14 rounded-xl bg-red-50 flex items-center justify-center shrink-0">
-        <svg width="32" height="32" viewBox="0 0 52 52" fill="none">
-          <circle cx="26" cy="26" r="22" stroke="#dc2626" strokeWidth="2" fill="none" />
-          <circle cx="26" cy="26" r="14" stroke="#dc2626" strokeWidth="1.5" fill="none" />
-          <path d="M14 26 Q20 16 26 26 Q32 36 38 26" stroke="#dc2626" strokeWidth="1.5" fill="none" />
-          <circle cx="26" cy="20" r="3" fill="#dc2626" />
-        </svg>
-      </div>
-    ),
-  },
-  {
-    id: 2,
-    category: "Travel & Tourism",
-    name: "FlyEase",
-    description:
-      "A modern travel discovery platform connecting users to destinations and curated experiences across East Africa.",
-    tags: ["Mobile App", "Marketplace", "Travel"],
-    logo: (
-      <div className="h-14 flex items-center gap-1 shrink-0">
-        <span className="text-xl font-black text-red-600 tracking-tight">FLY</span>
-        <svg width="16" height="12" viewBox="0 0 20 14" fill="none">
-          <path
-            d="M2 7h14M12 2l6 5-6 5"
-            stroke="#dc2626"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <span className="text-xl font-black text-red-600 tracking-tight">EASE</span>
-      </div>
-    ),
-  },
-  {
-    id: 3,
-    category: "Culture & Heritage",
-    name: "Mahadho",
-    description:
-      "A dynamic digital platform preserving and showcasing Somali culture, literature, and heritage for global audiences.",
-    tags: ["Content Platform", "Culture", "Digital Archive"],
-    logo: (
-      <div className="w-14 h-14 rounded-xl bg-gray-50 flex items-center justify-center shrink-0">
-        <svg width="34" height="34" viewBox="0 0 60 60" fill="none">
-          <rect x="8" y="16" width="40" height="32" rx="2" stroke="#374151" strokeWidth="2" fill="none" />
-          <path d="M8 24h40" stroke="#374151" strokeWidth="1.5" />
-          <path d="M30 16V10" stroke="#374151" strokeWidth="2" strokeLinecap="round" />
-          <path d="M22 10h16" stroke="#374151" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      </div>
-    ),
-  },
-  {
-    id: 4,
-    category: "E-Government",
-    name: "Urban Development Bureau",
-    description:
-      "A digital license registration portal for the Somali Regional Government's Urban Development and Construction Bureau.",
-    tags: ["E-Government", "Portal", "Somali Region"],
-    logo: (
-      <div className="w-14 h-14 rounded-xl bg-blue-50 flex items-center justify-center shrink-0">
-        <svg width="32" height="32" viewBox="0 0 52 52" fill="none">
-          <circle cx="26" cy="26" r="22" stroke="#374151" strokeWidth="1.5" fill="none" />
-          <path
-            d="M14 38 L20 26 L26 32 L32 22 L38 30"
-            stroke="#3b82f6"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-          <circle cx="26" cy="18" r="4" fill="#3b82f6" opacity="0.7" />
-        </svg>
-      </div>
-    ),
-  },
-];
+import { projects } from "@/lib/data/projects";
 
 export default function Projects() {
   return (
@@ -122,9 +37,10 @@ export default function Projects() {
         {/* Grid */}
         <div className="grid md:grid-cols-2 gap-5">
           {projects.map((project) => (
-            <div
-              key={project.id}
-              className="group border border-gray-100 rounded-2xl p-8 hover:border-gray-200 hover:shadow-2xl hover:shadow-gray-100 transition-all duration-300"
+            <Link
+              key={project.slug}
+              href={`/projects/${project.slug}`}
+              className="group border border-gray-100 rounded-2xl p-8 hover:border-gray-200 hover:shadow-2xl hover:shadow-gray-100 transition-all duration-300 block"
             >
               <div className="flex items-start justify-between mb-6">
                 {project.logo}
@@ -133,12 +49,12 @@ export default function Projects() {
                 </span>
               </div>
 
-              <h3 className="text-lg font-bold text-gray-900 mb-2">{project.name}</h3>
+              <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#0A1628] transition-colors">{project.name}</h3>
               <p className="text-sm text-gray-500 leading-relaxed mb-6">{project.description}</p>
 
               <div className="flex items-center justify-between">
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {project.tags.slice(0, 3).map((tag) => (
                     <span
                       key={tag}
                       className="text-[11px] font-medium text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-lg"
@@ -147,9 +63,8 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <Link
-                  href="/projects"
-                  className="text-sm text-[#0A1628] font-semibold hover:text-[#78AB14] inline-flex items-center gap-1.5 shrink-0 ml-4"
+                <span
+                  className="text-sm text-[#0A1628] font-semibold group-hover:text-[#78AB14] inline-flex items-center gap-1.5 shrink-0 ml-4 transition-colors"
                 >
                   View
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -161,9 +76,9 @@ export default function Projects() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </Link>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

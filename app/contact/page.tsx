@@ -7,7 +7,7 @@ import ContactForm from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact — Garaad Systems",
   description:
-    "Get in touch with Garaad Systems to discuss your digital transformation project. Based in Jijiga, Ethiopia, serving institutions across the Horn of Africa.",
+    "Get in touch with Garaad Systems to discuss your digital transformation project. Based in Jigjiga, Ethiopia, serving institutions across the Horn of Africa.",
 };
 
 const contactMethods = [
@@ -45,7 +45,7 @@ const contactMethods = [
   },
   {
     label: "Address",
-    value: "Bay/Haven Mall, G2, Jijiga, Somali Region, Ethiopia",
+    value: "Bay/Haven Mall, G2, Jigjiga, Somali Region, Ethiopia",
     href: "#",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none">

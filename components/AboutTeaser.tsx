@@ -51,7 +51,7 @@ const highlights = [
         <circle cx="12" cy="10" r="3" stroke="#8CC220" strokeWidth="1.5" />
       </svg>
     ),
-    label: "Based in Jijiga — built specifically for the Horn of Africa context.",
+    label: "Based in Jigjiga — built specifically for the Horn of Africa context.",
   },
 ];
 
@@ -82,7 +82,7 @@ export default function AboutTeaser() {
             Built for Institutions.
           </h2>
           <p className="text-white/50 text-sm leading-relaxed mb-8">
-            We are a lean technology consultancy based in Jijiga, Ethiopia — founded with a specific
+            We are a lean technology consultancy based in Jigjiga, Ethiopia — founded with a specific
             mandate: to deliver government-grade digital systems for public institutions that
             cannot afford to fail. Our hybrid team model combines in-house specialists with
             project-based engineers, giving every client access to senior expertise at every

@@ -33,13 +33,13 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-28 px-6 bg-[#8CC220] relative overflow-hidden">
+    <section id="process" className="py-28 px-6 bg-[#0A1628] relative overflow-hidden">
       {/* Subtle grid */}
       <div
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
-            "linear-gradient(#0A1628 1px, transparent 1px), linear-gradient(to right, #0A1628 1px, transparent 1px)",
+            "linear-gradient(#8CC220 1px, transparent 1px), linear-gradient(to right, #8CC220 1px, transparent 1px)",
           backgroundSize: "72px 72px",
         }}
       />
@@ -47,10 +47,10 @@ export default function Process() {
       <div className="relative max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="text-xs font-bold text-[#0A1628]/60 uppercase tracking-widest mb-3 block">
+          <span className="text-xs font-bold text-white/35 uppercase tracking-widest mb-3 block">
             How We Work
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-[#0A1628] tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">
             Our Delivery Process
           </h2>
         </div>
@@ -59,14 +59,14 @@ export default function Process() {
         <div className="grid md:grid-cols-5 gap-4">
           {steps.map((step) => (
             <div key={step.step} className="group">
-              <div className="bg-[#0A1628]/[0.07] border border-[#0A1628]/15 rounded-2xl p-6 h-full hover:bg-[#0A1628]/[0.12] hover:border-[#0A1628]/25 transition-all duration-200">
+              <div className="bg-white/[0.04] border border-white/10 rounded-2xl p-6 h-full hover:bg-white/[0.08] hover:border-white/20 transition-all duration-200">
                 <div className="flex items-center gap-2 mb-4">
-                  <span className="text-xs font-bold text-[#8CC220] bg-[#0A1628] rounded-lg px-2.5 py-1">
+                  <span className="text-xs font-bold text-[#0A1628] bg-[#8CC220] rounded-lg px-2.5 py-1">
                     {step.step}
                   </span>
                 </div>
-                <h3 className="text-sm font-bold text-[#0A1628] mb-2.5">{step.title}</h3>
-                <p className="text-xs text-[#0A1628]/60 leading-relaxed">{step.description}</p>
+                <h3 className="text-sm font-bold text-white mb-2.5">{step.title}</h3>
+                <p className="text-xs text-white/50 leading-relaxed">{step.description}</p>
               </div>
             </div>
           ))}

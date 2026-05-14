@@ -36,7 +36,7 @@ export default function Hero() {
           <div className="inline-flex items-center gap-2.5 bg-[#0A1628]/10 border border-[#0A1628]/15 rounded-full px-4 py-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#0A1628] animate-pulse block" />
             <span className="text-xs text-white/80 font-medium tracking-wide">
-              Technology &amp; Digital Consultancy — Jijiga, Ethiopia
+              Technology &amp; Digital Consultancy — Jigjiga, Ethiopia
             </span>
           </div>
         </div>
